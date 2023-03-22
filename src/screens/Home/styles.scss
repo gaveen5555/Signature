@@ -1,7 +1,9 @@
+@import '../../assets/variables';
+
 .container {
-  background-color: black; 
-  padding: 10px; 
-  flex: 1
+  background-color: $secondary-color;
+  padding: 10px;
+  flex: 1;
 }
 
 .filterContainer {
@@ -21,4 +23,3 @@
 .subtitle {
   font-size: 18px;
 }
-

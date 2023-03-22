@@ -1,3 +1,5 @@
+@import '../../assets/variables';
+
 .filterBtn {
   width: 100;
   height: 30;
@@ -6,17 +8,17 @@
   justify-content: center;
   align-items: center;
   margin: 10px;
-  background-color: #ffc700;
+  background-color: $primary-color;
 }
 .filterText{
-  color: black;
+  color: $text-color-secondary;
   font-weight: bold;
 }
 .activeFilter {
-  background-color: #ff8c00;
+  background-color: $filter-selected;
 }
 .title {
-  color: white;
+  color: $text-color-primary;
   padding: 10px;
   font-weight: bold;
 }

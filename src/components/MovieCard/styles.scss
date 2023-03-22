@@ -1,7 +1,5 @@
-.card {
-  background-color: '#fff';
-  border-radius: 5px;
-}
+@import '../../assets/variables';
+
 .poster {
   height: 200;
   border-radius: 5px;
@@ -15,5 +13,5 @@
 }
 .year {
   font-size: 14;
-  color: #666;
+  color: $text-color-sub;
 }

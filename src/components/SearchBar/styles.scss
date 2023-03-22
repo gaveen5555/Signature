@@ -1,7 +1,9 @@
+@import '../../assets/variables';
+
 .container {
   flex-direction: row;
   align-items: center;
-  background-color: white;
+  background-color: $text-color-primary;
   border-radius: 10px;
   margin-bottom: 20px;
   padding: 3px 10px 3px 10px;
@@ -9,14 +11,6 @@
 .input {
   flex: 1;
   font-size: 18px;
-  color: black;
+  color: $text-color-secondary;
 }
 
-.button {
-  background-color: #007aff;
-  border-radius: 5px;
-  padding: 10px;
-  margin-left: 10;
-  flex-direction: row;
-  align-items: center;
-}

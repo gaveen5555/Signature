@@ -10,6 +10,7 @@ interface Props {
   yearFilter: number | null;
   filteredData: Movie[];
   moviesData: Movie[];
+  searchQuery: string;
   handleNavigation: (x: string) => void;
   loadMore: () => void;
   reset: () => void;
@@ -19,6 +20,7 @@ const MoviesList = ({
   yearFilter,
   filteredData,
   moviesData,
+  searchQuery,
   handleNavigation,
   loadMore,
   reset,
@@ -38,7 +40,11 @@ const MoviesList = ({
       )}
       keyExtractor={item => item?.imdbID}
       ListFooterComponent={
-        !yearFilter ? <LoadMore loadMore={loadMore} /> : <Reset reset={reset} />
+        !yearFilter && !searchQuery ? (
+          <LoadMore loadMore={loadMore} />
+        ) : (
+          <Reset reset={reset} />
+        )
       }
       ListEmptyComponent={<EmptyView />}
       numColumns={2}

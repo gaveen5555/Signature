@@ -1,7 +1,9 @@
+@import '../../assets/variables';
+
 .container {
     flex: 1;
     flex-direction: column;
-    background-color: black;
+    background-color: $secondary-color;
     
   }
   .innerContainer {

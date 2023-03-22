@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo, useState} from 'react';
-import {View, StatusBar, SafeAreaView} from 'react-native';
+import {View, StatusBar, SafeAreaView, Alert} from 'react-native';
 import SearchBar from '../../components/SearchBar';
 import styles from './styles.scss';
 import FetchMoviesService from '../../service/FetchMoviesService';
@@ -31,6 +31,7 @@ const HomeScreen: React.FC = ({navigation}: any) => {
       setIsLoading(true);
       const cachedResult = cachedData[moviesToDisplay + page];
       if (cachedResult) {
+        setIsLoading(false);
         setMoviesData(prevMoviesData => [
           ...prevMoviesData,
           ...cachedResult?.Search,
@@ -40,12 +41,16 @@ const HomeScreen: React.FC = ({navigation}: any) => {
 
       const data = await FetchMoviesService.get(moviesToDisplay, page);
 
-      setMoviesData(prevMoviesData => [...prevMoviesData, ...data?.Search]);
+      if (!data.Error) {
+        setMoviesData(prevMoviesData => [...prevMoviesData, ...data?.Search]);
+        setCachedData((prevCachedData: any) => ({
+          ...prevCachedData,
+          [moviesToDisplay + page]: data,
+        }));
+      } else {
+        setError(data.Error);
+      }
 
-      setCachedData((prevCachedData: any) => ({
-        ...prevCachedData,
-        [moviesToDisplay + page]: data,
-      }));
       setIsLoading(false);
     }
 
@@ -68,6 +73,7 @@ const HomeScreen: React.FC = ({navigation}: any) => {
 
   const reset = () => {
     setYearFilter(null);
+    setSearchQuery('');
   };
 
   const handleSearch = (searchString: string) => {
@@ -108,6 +114,7 @@ const HomeScreen: React.FC = ({navigation}: any) => {
               yearFilter={yearFilter}
               filteredData={filteredData}
               moviesData={moviesData}
+              searchQuery={searchQuery}
               handleNavigation={handleNavigation}
               loadMore={loadMore}
               reset={reset}

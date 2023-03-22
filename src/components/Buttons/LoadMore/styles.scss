@@ -1,8 +1,10 @@
+@import '../../../assets/variables';
+
 .loadMoreBtn{
     padding: 10px;
     border-radius: 5px;
     text-align: center;
-    background-color: #FFC700;
+    background-color: $primary-color;
     font-weight: bold;
     font-size: 18px;
     color: black;
