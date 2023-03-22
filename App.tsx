@@ -11,15 +11,12 @@ function App(): JSX.Element {
   const Stack = createStackNavigator();
 
   return (
-    // <SafeAreaView>
-    //   {/* TODO: create styles file */}
-    //   <StatusBar backgroundColor={'white'} />
-    //   <ScrollView contentInsetAdjustmentBehavior="automatic">
-    //     <HomeScreen />
-    //   </ScrollView>
-    // </SafeAreaView>
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerShown: false,
+        }}>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Details" component={MovieDetail} />
       </Stack.Navigator>

@@ -1,9 +1,14 @@
 import React, {useState} from 'react';
-import {Alert, TextInput, TouchableOpacity, View} from 'react-native';
+import {TextInput, TouchableOpacity, View} from 'react-native';
 import styles from './styles.scss';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const SearchBar = ({placeholder, onSearch}) => {
+interface Props {
+  placeholder: string;
+  onSearch: (x: string) => void;
+}
+
+const SearchBar = ({placeholder, onSearch}: Props) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = () => {
@@ -15,11 +20,12 @@ const SearchBar = ({placeholder, onSearch}) => {
       <TextInput
         style={styles.input}
         placeholder={placeholder}
+        placeholderTextColor="gray"
         value={searchQuery}
         onChangeText={setSearchQuery}
       />
       <TouchableOpacity onPress={() => handleSearch()}>
-        <MaterialIcons name="search" size={20} color="#4F8EF7" />
+        <MaterialIcons name="search" size={38} color="#ffc700" />
       </TouchableOpacity>
     </View>
   );
